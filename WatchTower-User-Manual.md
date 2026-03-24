@@ -119,7 +119,7 @@ Follow these steps to get WatchTower running on your machine.
 
 - Clone the repository from GitHub:
 
-git clone <https://github.com/yourusername/watchtower.git>
+git clone <https://github.com/alikhan-devs/watchtower.git>
 
 cd watchtower
 
