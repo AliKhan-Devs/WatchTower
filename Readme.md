@@ -79,10 +79,10 @@ docker compose up -d
 
 ### 4. Install the SDK in your Express app
 ```bash
-npm install watchtower-sdk
+npm install @alikhan-devs/watchtower-sdk
 ```
 ```javascript
-const { watchTower } = require('watchtower-sdk');
+import { watchTower } from '@alikhan-devs/watchtower-sdk';
 
 app.use(watchTower({
   apiKey: 'your-api-key-from-dashboard',
