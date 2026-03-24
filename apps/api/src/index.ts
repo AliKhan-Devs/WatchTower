@@ -4,7 +4,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import { watchTower, WatchTowerClient } from '@alikhan-devs/watchtower-sdk';
+import { watchTower } from '@alikhan-devs/watchtower-sdk';
 dotenv.config();
 
 import authRoutes from './modules/auth/auth.routes';
