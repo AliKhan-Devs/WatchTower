@@ -1,0 +1,125 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  password     String
+  name         String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  workspace    Workspace?
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Workspace {
+  id        String   @id @default(cuid())
+  name      String
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apps      App[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model App {
+  id          String       @id @default(cuid())
+  name        String
+  description String?
+  apiKey      String       @unique @default(cuid())
+  workspaceId String
+  workspace   Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  metrics     Metric[]
+  alerts      Alert[]
+  uptimeChecks UptimeCheck[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Metric {
+  id           String   @id @default(cuid())
+  appId        String
+  app          App      @relation(fields: [appId], references: [id], onDelete: Cascade)
+  route        String
+  method       String
+  statusCode   Int
+  responseTime Int      // in milliseconds
+  timestamp    DateTime @default(now())
+
+  @@index([appId, timestamp])
+  @@index([appId, route])
+}
+
+model Alert {
+  id             String      @id @default(cuid())
+  appId          String
+  app            App         @relation(fields: [appId], references: [id], onDelete: Cascade)
+  type           AlertType
+  threshold      Float
+  webhookUrl     String?
+  email          String?
+  cooldownMins   Int         @default(15)
+  lastFiredAt    DateTime?
+  isActive       Boolean     @default(true)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model UptimeCheck {
+  id        String      @id @default(cuid())
+  appId     String
+  app       App         @relation(fields: [appId], references: [id], onDelete: Cascade)
+  url       String
+  status    UptimeStatus @default(UNKNOWN)
+  failCount Int         @default(0)
+  uptimeEvents UptimeEvent[]
+  lastCheckedAt DateTime?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+
+
+model UptimeEvent {
+  id             String      @id @default(cuid())
+  uptimeCheckId  String
+  uptimeCheck    UptimeCheck @relation(fields: [uptimeCheckId], references: [id], onDelete: Cascade)
+  success        Boolean
+  statusCode     Int?
+  responseTime   Int?        // ms
+  error          String?
+  timestamp      DateTime    @default(now())
+
+  @@index([uptimeCheckId, timestamp])
+}
+enum AlertType {
+  ERROR_RATE
+  RESPONSE_TIME
+  UPTIME
+}
+enum UptimeStatus {
+  UP
+  DOWN
+  UNKNOWN
+}

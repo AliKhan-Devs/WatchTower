@@ -1,0 +1,31 @@
+{
+  "name": "@alikhan-devs/watchtower-sdk",
+  "version": "1.0.0",
+  "description": "Lightweight monitoring SDK for Express apps — automatically tracks response times, error rates, and sends metrics to WatchTower.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npx tsc",
+    "dev": "npx tsc --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "monitoring",
+    "express",
+    "metrics",
+    "watchtower",
+    "apm"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "express": "^4.18.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.6.0",
+    "typescript": "^6.0.2"
+  }
+}

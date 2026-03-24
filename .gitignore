@@ -1,0 +1,8 @@
+.env
+node_modules
+dist
+.next
+*.log
+apps/api/.env
+apps/dashboard/.env.local
+**.env
