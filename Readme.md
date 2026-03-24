@@ -23,11 +23,11 @@
 [![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
 
-<br/>
+<!-- <br/>
 
 [**Live Demo**](#) · [**Documentation**](#) · [**Report a Bug**](issues) · [**Request a Feature**](issues)
 
-<br/>
+<br/> -->
 
 </div>
 
