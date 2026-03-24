@@ -1,6 +1,6 @@
 {
   "name": "@alikhan-devs/watchtower-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight monitoring SDK for Express apps — automatically tracks response times, error rates, and sends metrics to WatchTower.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
