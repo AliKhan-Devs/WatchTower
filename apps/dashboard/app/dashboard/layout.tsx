@@ -9,12 +9,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     if (!token) router.push('/login');
-  }, []);
+  }, [router]);
 
   return (
-    <div className="flex">
+    <div className="min-h-screen bg-transparent">
       <Sidebar />
-      <main className="ml-60 flex-1 min-h-screen p-6">{children}</main>
+      <main className="min-h-screen pl-0 lg:pl-72">
+        <div className="mx-auto max-w-7xl p-4 pt-20 sm:p-6 sm:pt-24 lg:p-8 lg:pt-8">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }

@@ -47,7 +47,8 @@ WatchTower is a **lightweight, self-hosted alternative to Datadog and Better Upt
 > **Your data never leaves your server.** WatchTower runs entirely on your own infrastructure.
 
 ---
-
+![dashboard pic 1](./images//dashboard_1.png)
+![dashboard pic 2](./images//dashboard_2.png)
 ## ✨ Quick Start
 
 ### 1 · Clone & configure
@@ -128,7 +129,8 @@ Your app is now fully monitored. Open the dashboard and watch metrics flow in.
 │   Recharts graphs · Real-time feed · Alert config · App switcher   │
 └─────────────────────────────────────────────────────────────────────┘
 ```
-
+### ERD:
+![ERD Diagram](./images/erd.png)
 ### Why This Architecture?
 
 | Pattern | Why It's Here |

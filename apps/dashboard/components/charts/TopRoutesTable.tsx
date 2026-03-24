@@ -5,28 +5,28 @@ interface Props {
 }
 
 export const TopRoutesTable = ({ data }: Props) => (
-  <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-    <h3 className="text-white font-semibold mb-4">Top Routes</h3>
+  <div className="surface-panel rounded-[1.4rem] p-6">
+    <h3 className="mb-4 text-lg font-semibold text-white">Top Routes</h3>
     {data.length === 0 ? (
-      <p className="text-gray-500 text-sm text-center py-8">No data yet</p>
+      <p className="py-8 text-center text-sm text-slate-500">No data yet</p>
     ) : (
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-gray-400 border-b border-gray-800">
-              <th className="text-left pb-2">Route</th>
-              <th className="text-right pb-2">Requests</th>
-              <th className="text-right pb-2">Avg (ms)</th>
-              <th className="text-right pb-2">Error %</th>
+            <tr className="border-b border-white/8 text-slate-400">
+              <th className="pb-2 text-left">Route</th>
+              <th className="pb-2 text-right">Requests</th>
+              <th className="pb-2 text-right">Avg (ms)</th>
+              <th className="pb-2 text-right">Error %</th>
             </tr>
           </thead>
           <tbody>
             {data.map((row, i) => (
-              <tr key={i} className="border-b border-gray-800/50 hover:bg-gray-800/30">
-                <td className="py-2 text-gray-300 font-mono text-xs">{row.route}</td>
-                <td className="py-2 text-right text-gray-300">{row.count}</td>
-                <td className="py-2 text-right text-blue-400">{row.avgResponseTime}ms</td>
-                <td className={`py-2 text-right font-semibold ${row.errorRate > 5 ? 'text-red-400' : 'text-green-400'}`}>
+              <tr key={i} className="border-b border-white/6 hover:bg-white/3">
+                <td className="py-3 pr-3 font-mono text-xs text-slate-300">{row.route}</td>
+                <td className="py-3 text-right text-slate-300">{row.count}</td>
+                <td className="py-3 text-right text-sky-300">{row.avgResponseTime}ms</td>
+                <td className={`py-3 text-right font-semibold ${row.errorRate > 5 ? 'text-rose-300' : 'text-emerald-300'}`}>
                   {row.errorRate.toFixed(1)}%
                 </td>
               </tr>

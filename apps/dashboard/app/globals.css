@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08111f;
+  --background-soft: #0f1b33;
+  --panel: rgba(10, 18, 34, 0.82);
+  --panel-strong: rgba(9, 16, 29, 0.96);
+  --panel-muted: rgba(148, 163, 184, 0.08);
+  --border: rgba(148, 163, 184, 0.14);
+  --border-strong: rgba(148, 163, 184, 0.22);
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --muted-strong: #cbd5e1;
+  --accent: #7dd3fc;
+  --accent-strong: #38bdf8;
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
 }
 
 @theme inline {
@@ -12,15 +25,140 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.12), transparent 24%),
+    linear-gradient(180deg, #09111f 0%, #060c17 100%);
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 30%),
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.1), transparent 22%),
+    linear-gradient(180deg, #09111f 0%, #060c17 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+a,
+button,
+input,
+select {
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+  color: #f8fafc;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.surface-panel {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.86), rgba(8, 15, 30, 0.94));
+  border: 1px solid var(--border);
+  box-shadow:
+    0 24px 60px rgba(2, 6, 23, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(18px);
+}
+
+.surface-panel-strong {
+  background: linear-gradient(180deg, rgba(8, 15, 30, 0.96), rgba(6, 11, 23, 0.98));
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.38);
+  backdrop-filter: blur(18px);
+}
+
+.surface-muted {
+  background: var(--panel-muted);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.field-input {
+  width: 100%;
+  border-radius: 0.95rem;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.72);
+  color: var(--foreground);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.field-input::placeholder {
+  color: rgba(148, 163, 184, 0.72);
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: rgba(125, 211, 252, 0.7);
+  box-shadow:
+    0 0 0 4px rgba(56, 189, 248, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.button-primary {
+  border-radius: 0.95rem;
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  color: white;
+  box-shadow:
+    0 16px 30px rgba(37, 99, 235, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.button-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow:
+    0 20px 36px rgba(37, 99, 235, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.button-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button-secondary {
+  border-radius: 0.9rem;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.72);
+  color: var(--muted-strong);
+}
+
+.button-secondary:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.status-pill {
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--muted-strong);
+}
+
+.grid-glow {
+  position: relative;
+}
+
+.grid-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.08), transparent 42%, rgba(56, 189, 248, 0.05));
+  opacity: 0.9;
 }
