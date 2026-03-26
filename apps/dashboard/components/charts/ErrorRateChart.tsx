@@ -25,7 +25,10 @@ export const ErrorRateChart = ({ data }: Props) => {
             <Tooltip
               contentStyle={{ backgroundColor: '#08111f', border: '1px solid rgba(148, 163, 184, 0.16)', borderRadius: 16 }}
               labelStyle={{ color: '#f8fafc' }}
-              formatter={(val: number) => [`${val.toFixed(2)}%`, 'Error Rate']}
+              formatter={(value) => {
+                const numericValue = typeof value === 'number' ? value : Number(value ?? 0);
+                return [`${numericValue.toFixed(2)}%`, 'Error Rate'];
+              }}
             />
             <Bar dataKey="errorRate" fill="#fb7185" radius={[8, 8, 0, 0]} name="Error Rate" />
           </BarChart>

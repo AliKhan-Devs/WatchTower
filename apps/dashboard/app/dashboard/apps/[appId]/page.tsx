@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import api from '@/lib/api';
 import { useMetrics } from '@/lib/hooks/useMetrics';
 import { useSocket } from '@/lib/hooks/useSocket';
+import type { LiveMetric } from '@/lib/hooks/useSocket';
 import { StatCard } from '@/components/ui/StatCard';
 import { UptimeStatus } from '@/components/ui/UptimeStatus';
 import { ResponseTimeChart } from '@/components/charts/ResponseTimeChart';
@@ -24,8 +25,6 @@ type AlertRule = {
   cooldownMins: number;
   isActive: boolean;
 };
-
-type LiveMetric = Record<string, unknown>;
 
 type SocketAlert = {
   type: string;

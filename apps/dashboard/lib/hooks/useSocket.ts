@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { getSocket } from '../socket';
 
-interface LiveMetric {
+export interface LiveMetric {
   route: string;
   method: string;
   statusCode: number;
