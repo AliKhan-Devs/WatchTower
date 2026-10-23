@@ -93,13 +93,15 @@ import { watchTower } from '@alikhan-devs/watchtower-sdk';
 ```
 
 Add the middleware after creating your Express app and before your routes:
+
+```js
 app.use(watchTower({
   apiKey: 'your-api-key-from-dashboard',
   host: 'http://localhost:3000',
 }));
 ```
 
-After configuring the SDK, send requests to your Express app and check the WatchTower dashboard for incoming metrics. Open the dashboard and watch metrics flow in.
+After configuring the SDK, send requests to your Express app and check the WatchTower dashboard for incoming metrics.
 
 ---
 
