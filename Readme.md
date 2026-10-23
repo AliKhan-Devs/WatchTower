@@ -47,15 +47,15 @@ WatchTower is a **lightweight, self-hosted alternative to Datadog and Better Upt
 > **Your data never leaves your server.** WatchTower runs entirely on your own infrastructure.
 
 ---
-![dashboard pic 1](./images//dashboard_1.png)
-![dashboard pic 2](./images//dashboard_2.png)
+![WatchTower monitoring dashboard](./images/dashboard_1.png)
+![WatchTower metrics dashboard](./images/dashboard_2.png)
 ## ✨ Quick Start
 
 ### 1 · Clone & configure
 
 ```bash
 git clone https://github.com/AliKhan-Devs/WatchTower.git
-cd watchtower
+cd WatchTower
 cp .env.example .env   # fill in JWT secrets and DB password
 ```
 
@@ -72,23 +72,34 @@ docker compose up -d
 
 ### 3 · Monitor your Express app
 
+Install the SDK in the application you want to monitor:
+
 ```bash
-npm i @alikhan-devs/watchtower-sdk
+npm install @alikhan-devs/watchtower-sdk
 ```
+
+Choose the import style that matches your project.
+
+**CommonJS**
 
 ```js
 const { watchTower } = require('@alikhan-devs/watchtower-sdk');
-OR 
-import { watchTower } from '@alikhan-devs/watchtower-sdk';
+```
 
-// That's it. Add these 2 lines to your Express app.
+**ES modules**
+
+```js
+import { watchTower } from '@alikhan-devs/watchtower-sdk';
+```
+
+Add the middleware after creating your Express app and before your routes:
 app.use(watchTower({
   apiKey: 'your-api-key-from-dashboard',
-  host:   'http://localhost:3000',
+  host: 'http://localhost:3000',
 }));
 ```
 
-Your app is now fully monitored. Open the dashboard and watch metrics flow in.
+After configuring the SDK, send requests to your Express app and check the WatchTower dashboard for incoming metrics. Open the dashboard and watch metrics flow in.
 
 ---
 
