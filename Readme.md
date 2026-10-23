@@ -33,23 +33,23 @@
 
 ---
 
-## 🗼 What Is WatchTower?
+## What Is WatchTower?
 
 WatchTower is a **lightweight, self-hosted alternative to Datadog and Better Uptime**. Install the SDK in any Express app, and within seconds you have:
 
-- 📊 **Response time & error rate dashboards** with historical charts
-- ⚡ **Real-time metrics feed** over WebSocket — no polling
-- 🔔 **Threshold-based alerting** via Slack, Discord, or email
-- 📡 **Uptime monitoring** — pings your URLs every 60 seconds
-- 🔑 **Multi-tenant** — each user has their own workspace and apps
-- 📦 **Published npm SDK** — `npm i @alikhan-devs/watchtower-sdk`, 2 lines of code
+- **Response time & error rate dashboards** with historical charts
+- **Real-time metrics feed** over WebSocket — no polling
+- **Threshold-based alerting** via Slack, Discord, or email
+- **Uptime monitoring** — pings your URLs every 60 seconds
+- **Multi-tenant** — each user has their own workspace and apps
+- **Published npm SDK** — `npm i @alikhan-devs/watchtower-sdk`, 2 lines of code
 
 > **Your data never leaves your server.** WatchTower runs entirely on your own infrastructure.
 
 ---
 ![WatchTower monitoring dashboard](./images/dashboard_1.png)
 ![WatchTower metrics dashboard](./images/dashboard_2.png)
-## ✨ Quick Start
+## Quick Start
 
 ### 1 · Clone & configure
 
@@ -105,7 +105,7 @@ After configuring the SDK, send requests to your Express app and check the Watch
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -155,7 +155,7 @@ After configuring the SDK, send requests to your Express app and check the Watch
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer | Technology | Purpose |
 |---|---|---|
@@ -172,7 +172,7 @@ After configuring the SDK, send requests to your Express app and check the Watch
 
 ---
 
-## 📦 Repository Structure
+## Repository Structure
 
 ```
 watchtower/
@@ -211,7 +211,7 @@ watchtower/
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
 ### Authentication
 
@@ -222,7 +222,7 @@ POST /api/auth/refresh     Body: { refreshToken }
 POST /api/auth/logout      Body: { refreshToken }
 ```
 
-### Apps  `🔒 JWT`
+### Apps  `JWT`
 
 ```http
 GET    /api/apps
@@ -233,7 +233,7 @@ DELETE /api/apps/:id
 POST   /api/apps/:id/rotate-key
 ```
 
-### Ingest  `🔑 API Key`
+### Ingest  `\API Key`
 
 ```http
 POST /api/ingest
@@ -242,7 +242,7 @@ x-api-key: <app-api-key>
 [{ route, method, statusCode, responseTime, timestamp? }]   # up to 100 per request
 ```
 
-### Metrics  `🔒 JWT`
+### Metrics  `JWT`
 
 ```http
 GET /api/metrics/:appId/overview        ?hours=24
@@ -251,7 +251,7 @@ GET /api/metrics/:appId/error-rate      ?hours=24
 GET /api/metrics/:appId/top-routes      ?hours=24
 ```
 
-### Alerts  `🔒 JWT`
+### Alerts  `JWT`
 
 ```http
 POST   /api/alerts           Body: { appId, type, threshold, cooldownMins?, webhookUrl?, email? }
@@ -260,7 +260,7 @@ PATCH  /api/alerts/:id
 DELETE /api/alerts/:id
 ```
 
-### Uptime  `🔒 JWT`
+### Uptime  `JWT`
 
 ```http
 POST   /api/uptime           Body: { appId, url }
@@ -271,7 +271,7 @@ GET    /api/uptime/:appId/history   ?hours=24
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Copy `.env.example` to `.env` and set these values:
 
@@ -301,7 +301,7 @@ SMTP_FROM=watchtower@yourdomain.com
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 ### Docker Compose (recommended)
 
@@ -333,7 +333,7 @@ Add these secrets to your GitHub repo (`Settings → Secrets → Actions`):
 
 ---
 
-## 📡 SDK Reference
+## SDK Reference
 
 ```bash
 npm install @alikhan-devs/watchtower-sdk
@@ -360,7 +360,7 @@ The SDK automatically:
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Retention policy — auto-delete metrics older than N days
 - [ ] Multiple uptime checks per app
@@ -372,7 +372,7 @@ The SDK automatically:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome. Please open an issue first to discuss what you'd like to change.
 
@@ -389,7 +389,7 @@ docker compose up postgres redis -d
 
 ---
 
-## 📄 License
+## License
 
 [MIT](LICENSE) — built by **Ali Khan**.
 
